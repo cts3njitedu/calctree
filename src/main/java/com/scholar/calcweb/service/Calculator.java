@@ -21,7 +21,7 @@ public class Calculator {
 		 
 		List<Token> tokenL = createToken();
 		calExpr = new CalculateExpression(tokenL);
-		
+		calExpr.execute();
 		
 	}
 	public List<Token> createToken() {

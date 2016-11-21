@@ -26,5 +26,8 @@ public class ManageTokens {
 		
 		counter--;
 	}
+	public int getCounter(){
+		return counter;
+	}
 
 }

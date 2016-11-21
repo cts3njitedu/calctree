@@ -10,9 +10,20 @@ public class CalculateExpression {
 	private List<Token> tokenList;
 	private ManageTokens manageTokens;
 
+	private int tokenListCard;
+
 	public CalculateExpression(List<Token> tokenList) {
 		this.tokenList = tokenList;
 		this.manageTokens = new ManageTokens(tokenList);
+
+		this.tokenListCard = tokenList.size() - 1;
+	}
+
+	public void execute() {
+
+		PineTree result = Expression();
+		
+		System.out.println(result);
 	}
 
 	public PineTree Expression() {
@@ -22,6 +33,11 @@ public class CalculateExpression {
 		if (term == null) {
 
 			return null;
+		}
+		if (manageTokens.getCounter() > tokenListCard) {
+
+			return term;
+
 		}
 		Token token = manageTokens.getToken();
 
@@ -37,7 +53,8 @@ public class CalculateExpression {
 			}
 		}
 
-		return new PineTree(value, term, null);
+		manageTokens.pushBack();
+		return term;
 
 	}
 
@@ -47,6 +64,11 @@ public class CalculateExpression {
 		if (factor == null) {
 
 			return null;
+		}
+		if (manageTokens.getCounter() > tokenListCard) {
+
+			return factor;
+
 		}
 		Token token = manageTokens.getToken();
 
@@ -62,7 +84,7 @@ public class CalculateExpression {
 		}
 
 		manageTokens.pushBack();
-		return new PineTree(value, factor, null);
+		return factor;
 
 	}
 
@@ -72,6 +94,11 @@ public class CalculateExpression {
 		if (primary == null) {
 
 			return null;
+		}
+		if (manageTokens.getCounter() > tokenListCard) {
+
+			return primary;
+
 		}
 		Token token = manageTokens.getToken();
 
@@ -88,7 +115,7 @@ public class CalculateExpression {
 		}
 
 		manageTokens.pushBack();
-		return new PineTree(value, primary, null);
+		return primary;
 
 	}
 
@@ -115,8 +142,7 @@ public class CalculateExpression {
 					return new PineTree(value, expr, new PineTree(value2, null,
 							null));
 
-				}
-				else{
+				} else {
 					return null;
 				}
 
