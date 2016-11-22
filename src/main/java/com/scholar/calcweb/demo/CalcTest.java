@@ -9,8 +9,9 @@ public class CalcTest {
 
 	public static void main(String []args){
 
-		Calculator calculator = new Calculator("5-6");
-		System.out.println(calculator.execute());
+		Calculator calculator = new Calculator("5+6^(5-4)*8");
+		System.out.println(calculator.execute().getResult());
+		
 		
 	/*	List<String> temp = new LinkedList<String>();
 		

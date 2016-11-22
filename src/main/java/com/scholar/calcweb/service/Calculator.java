@@ -3,6 +3,7 @@ package com.scholar.calcweb.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.scholar.calcweb.model.Result;
 import com.scholar.calcweb.model.Token;
 
 public class Calculator {
@@ -17,13 +18,14 @@ public class Calculator {
 		this.tokenizer = new Tokenizer(tokenString);
 	}
 
-	public String execute(){
-		 
+	public Result execute() {
+
 		List<Token> tokenL = createToken();
 		calExpr = new CalculateExpression(tokenL);
-		return calExpr.execute();
-		
+		return ConstructResponse.getResult(calExpr.execute());
+
 	}
+
 	public List<Token> createToken() {
 		boolean isToken = tokenizer.performTokenizer();
 		if (isToken) {
@@ -32,10 +34,10 @@ public class Calculator {
 			return new LinkedList<Token>();
 		}
 	}
-	
-	public void parser(){
-	
-		
-		
+
+
+	public String getTokenString() {
+		return tokenString;
 	}
+
 }

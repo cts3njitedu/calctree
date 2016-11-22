@@ -3,6 +3,7 @@ package com.scholar.calcweb.model;
 public class Result {
 
 	private String result;
+	
 
 	public String getResult() {
 		return result;

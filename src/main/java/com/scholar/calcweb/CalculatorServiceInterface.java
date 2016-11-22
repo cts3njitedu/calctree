@@ -1,12 +1,14 @@
 package com.scholar.calcweb;
 
-import com.scholar.calcweb.model.Result;
+import javax.ws.rs.core.Response;
+
+import com.scholar.calcweb.model.Expression;
 
 
 public interface CalculatorServiceInterface {
 
 
-	public Result hello();
+	public Response getResult(Expression expr);
 		
 	
 }

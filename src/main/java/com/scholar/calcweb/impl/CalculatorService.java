@@ -2,24 +2,29 @@ package com.scholar.calcweb.impl;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import com.scholar.calcweb.CalculatorServiceInterface;
-import com.scholar.calcweb.model.Result;
+import com.scholar.calcweb.model.Expression;
+import com.scholar.calcweb.service.Calculator;
 
 @Path("/")
 public class CalculatorService implements CalculatorServiceInterface {
 
 	@Override
-	@GET
+	@POST
 	@Produces("application/json")
-	public Result hello() {
+	@Consumes("application/json")
+	public Response getResult(Expression expr) {
 		// TODO Auto-generated method stub
 		
-		Result result = new Result();
-		result.setResult("This is working");
-		return result;
+		Calculator calculator = new Calculator(expr.getExpression());
+	
+		
+		return Response.status(200).entity(calculator.execute()).build();
 	}
 
 }
