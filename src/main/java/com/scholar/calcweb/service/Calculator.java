@@ -9,7 +9,7 @@ public class Calculator {
 
 	private CalculateExpression calExpr;
 	private Tokenizer tokenizer;
-	private ManageTokens manageTokens;
+
 	private String tokenString;
 
 	public Calculator(String tokenString) {
@@ -17,11 +17,11 @@ public class Calculator {
 		this.tokenizer = new Tokenizer(tokenString);
 	}
 
-	public void execute(){
+	public String execute(){
 		 
 		List<Token> tokenL = createToken();
 		calExpr = new CalculateExpression(tokenL);
-		calExpr.execute();
+		return calExpr.execute();
 		
 	}
 	public List<Token> createToken() {

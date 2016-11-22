@@ -1,6 +1,7 @@
 package com.scholar.calcweb.service;
 
 import java.util.List;
+import java.util.Stack;
 
 import com.scholar.calcweb.model.Token;
 import com.scholar.calcweb.tree.PineTree;
@@ -10,6 +11,7 @@ public class CalculateExpression {
 	private List<Token> tokenList;
 	private ManageTokens manageTokens;
 
+	private PineTreeTraversal pineTreeTrav;
 	private int tokenListCard;
 
 	public CalculateExpression(List<Token> tokenList) {
@@ -17,13 +19,19 @@ public class CalculateExpression {
 		this.manageTokens = new ManageTokens(tokenList);
 
 		this.tokenListCard = tokenList.size() - 1;
+		
+	
 	}
 
-	public void execute() {
+	public String execute() {
 
-		PineTree result = Expression();
+		PineTree pineTree = Expression();
 		
-		System.out.println(result);
+		pineTreeTrav = new PineTreeTraversal(pineTree);
+		pineTreeTrav.execute();
+		
+		return pineTreeTrav.getResult();
+	
 	}
 
 	public PineTree Expression() {
@@ -49,7 +57,7 @@ public class CalculateExpression {
 			if (expr == null) {
 				return null;
 			} else {
-				return new PineTree(value, term, expr);
+				return new PineTree(value,type, term, expr);
 			}
 		}
 
@@ -79,7 +87,7 @@ public class CalculateExpression {
 			if (primary == null) {
 				return null;
 			} else {
-				return new PineTree(value, factor, primary);
+				return new PineTree(value, type,factor, primary);
 			}
 		}
 
@@ -110,7 +118,7 @@ public class CalculateExpression {
 			if (factor == null) {
 				return null;
 			} else {
-				return new PineTree(value, primary, factor);
+				return new PineTree(value, type,primary, factor);
 			}
 		}
 
@@ -126,7 +134,7 @@ public class CalculateExpression {
 		String type = token.getType();
 		if (type == "INT" || type == "FLOAT") {
 
-			return new PineTree(value, null, null);
+			return new PineTree(value,type, null, null);
 		} else if (type == "LPAREN") {
 
 			PineTree expr = Expression();
@@ -139,8 +147,9 @@ public class CalculateExpression {
 				String value2 = token2.getValue();
 				String type2 = token2.getType();
 				if (type2 == "RPAREN") {
-					return new PineTree(value, expr, new PineTree(value2, null,
-							null));
+				/*	return new PineTree(value, expr, new PineTree(value2, null,
+							null));*/
+					return expr;
 
 				} else {
 					return null;
