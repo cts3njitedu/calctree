@@ -65,14 +65,15 @@ public class PineTreeTraversal {
 			PineTree pineL = pine.getLeft();
 			PineTree pineR = pine.getRight();
 			if (pine.getType().equals("PLUS")) {
-				String result = "";
+				String [] result = new String [2];
+				
 
 				if (pineL.getType().equals("INT")
 						&& pineR.getType().equals("INT")) {
 
-					result = MathFunctions.addI(pineL.getValue(),
+					result = MathFunctions.add(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("INT");
+					pine.setType(result[1]);
 				}
 
 				else if (pineL.getType().equals("FLOAT")
@@ -80,22 +81,22 @@ public class PineTreeTraversal {
 
 					result = MathFunctions.add(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("FLOAT");
+					pine.setType(result[1]);
 				}
 
-				pine.setValue(result);
+				pine.setValue(result[0]);
 
 			}
 
 			else if (pine.getType().equals("STAR")) {
-				String result = "";
+				String [] result = new String [2];
 
 				if (pineL.getType().equals("INT")
 						&& pineR.getType().equals("INT")) {
 
-					result = MathFunctions.multiplyI(pineL.getValue(),
+					result = MathFunctions.multiply(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("INT");
+					pine.setType(result[1]);
 				}
 
 				else if (pineL.getType().equals("FLOAT")
@@ -103,21 +104,21 @@ public class PineTreeTraversal {
 
 					result = MathFunctions.multiply(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("FLOAT");
+					pine.setType(result[1]);
 				}
 
-				pine.setValue(result);
+				pine.setValue(result[0]);
 
 			} else if (pine.getType().equals("DIV")) {
 
-				String result = "";
+				String [] result = new String [2];
 
 				if (pineL.getType().equals("INT")
 						&& pineR.getType().equals("INT")) {
 
 					result = MathFunctions.divide(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("FLOAT");
+					pine.setType(result[1]);
 				}
 
 				else if (pineL.getType().equals("FLOAT")
@@ -125,21 +126,21 @@ public class PineTreeTraversal {
 
 					result = MathFunctions.divide(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("FLOAT");
+					pine.setType(result[1]);
 				}
 
-				pine.setValue(result);
+				pine.setValue(result[0]);
 
 			} else if (pine.getType().equals("MINUS")) {
 
-				String result = "";
+				String [] result = new String [2];
 
 				if (pineL.getType().equals("INT")
 						&& pineR.getType().equals("INT")) {
 
-					result = MathFunctions.subtractI(pineL.getValue(),
+					result = MathFunctions.subtract(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("INT");
+					pine.setType(result[1]);
 				}
 
 				else if (pineL.getType().equals("FLOAT")
@@ -147,21 +148,21 @@ public class PineTreeTraversal {
 
 					result = MathFunctions.subtract(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("FLOAT");
+					pine.setType(result[1]);
 				}
 
-				pine.setValue(result);
+				pine.setValue(result[0]);
 
 			} else if (pine.getType().equals("EXP")) {
 
-				String result = "";
+				String [] result = new String [2];
 
 				if (pineL.getType().equals("INT")
 						&& pineR.getType().equals("INT")) {
 
 					result = MathFunctions.exponent(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("FLOAT");
+					pine.setType(result[1]);
 				}
 
 				else if (pineL.getType().equals("FLOAT")
@@ -169,23 +170,23 @@ public class PineTreeTraversal {
 
 					result = MathFunctions.exponent(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("FLOAT");
+					pine.setType(result[1]);
 				}
 
-				pine.setValue(result);
+				pine.setValue(result[0]);
 
 			} else if (pine.getType().equals("MOD")) {
 
-				String result = "";
+				String [] result = new String [2];
 
-				if (pineL.getType().equals("INT")
-						&& pineR.getType().equals("INT")) {
+				if ((pineL.getType().equals("INT") || pineL.getType().equals("FLOAT") )
+						&& (pineR.getType().equals("INT")||pineR.getType().equals("FLOAT"))) {
 
 					result = MathFunctions.mod(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("INT");
+					pine.setType(result[1]);
 				}
-				pine.setValue(result);
+				pine.setValue(result[0]);
 			}
 
 		}

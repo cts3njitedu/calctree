@@ -83,11 +83,11 @@ public class CalculateExpression {
 		String value = token.getValue();
 		String type = token.getType();
 		if (type == "MOD" || type == "STAR" || type == "DIV") {
-			PineTree primary = Primary();
-			if (primary == null) {
+			PineTree term = Term();
+			if (term == null) {
 				return null;
 			} else {
-				return new PineTree(value, type,factor, primary);
+				return new PineTree(value, type,factor, term);
 			}
 		}
 
