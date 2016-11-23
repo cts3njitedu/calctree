@@ -114,7 +114,7 @@ public class CalculateExpression {
 		String type = token.getType();
 
 		if (type == "EXP") {
-			PineTree factor = Primary();
+			PineTree factor = Factor();
 			if (factor == null) {
 				return null;
 			} else {
