@@ -9,7 +9,7 @@ public class CalcTest {
 
 	public static void main(String []args){
 
-		Calculator calculator = new Calculator("5+6^(5-4)*8");
+		Calculator calculator = new Calculator("6+83/5");
 		System.out.println(calculator.execute().getResult());
 		
 		

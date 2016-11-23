@@ -115,9 +115,9 @@ public class PineTreeTraversal {
 				if (pineL.getType().equals("INT")
 						&& pineR.getType().equals("INT")) {
 
-					result = MathFunctions.divideI(pineL.getValue(),
+					result = MathFunctions.divide(pineL.getValue(),
 							pineR.getValue());
-					pine.setType("INT");
+					pine.setType("FLOAT");
 				}
 
 				else if (pineL.getType().equals("FLOAT")
