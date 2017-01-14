@@ -1,19 +1,27 @@
 package com.scholar.calcweb.demo;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import com.scholar.calcweb.service.Calculator;
-import com.scholar.calcweb.service.MathFunctions;
+import com.scholar.calcweb.service.RpnCalculator;
 
 public class CalcTest {
 
 	public static void main(String[] args) {
 
 		
-		 Calculator calculator = new Calculator("5*2*3^2*2");
-		 System.out.println(calculator.execute().getResult());
+		/* Calculator calculator = new Calculator("5/3/4");
+		 System.out.println(calculator.execute().getResult());*/
+		
+		
+		RpnCalculator calculator = new RpnCalculator("(2+3)^-1+4");
+		calculator.execute();
 		 
+	/*	Tokenizer token = new Tokenizer("(((9+2)-5*19.78))");
+		token.performTokenizerB();
+		List<Token>tok = token.getTokenList();
+		for(Token t: tok ){
+			
+			System.out.println(t.getValue());
+			
+		}*/
 	/*	String[] t = MathFunctions.checkIntFloat("50.3");
 		
 		for(String te: t){

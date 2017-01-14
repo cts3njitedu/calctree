@@ -19,19 +19,50 @@ public class CalculateExpression {
 		this.manageTokens = new ManageTokens(tokenList);
 
 		this.tokenListCard = tokenList.size() - 1;
-		
-	
+
 	}
 
 	public String execute() {
 
 		PineTree pineTree = Expression();
-		
+
 		pineTreeTrav = new PineTreeTraversal(pineTree);
 		pineTreeTrav.execute();
-		
+
 		return pineTreeTrav.getResult();
-	
+
+	}
+
+	public String rightAssoc(String number, String operator, String typeOperator) {
+
+		boolean done = true;
+		String result = number;
+
+		while (done) {
+
+			if (manageTokens.getCounter() > tokenListCard) {
+
+				return result;
+
+			}
+			Token token = manageTokens.getToken();
+
+			String value = token.getValue();
+
+			Token tokenOp = manageTokens.getToken();
+
+			String typeOp = tokenOp.getType();
+
+			String valueOp = tokenOp.getValue();
+			
+			if(operator.equals("-")){
+				
+				
+			}
+
+		}
+		return null;
+
 	}
 
 	public PineTree Expression() {
@@ -57,7 +88,7 @@ public class CalculateExpression {
 			if (expr == null) {
 				return null;
 			} else {
-				return new PineTree(value,type, term, expr);
+				return new PineTree(value, type,"","", term, expr);
 			}
 		}
 
@@ -87,7 +118,7 @@ public class CalculateExpression {
 			if (term == null) {
 				return null;
 			} else {
-				return new PineTree(value, type,factor, term);
+				return new PineTree(value, type,"","", factor, term);
 			}
 		}
 
@@ -118,7 +149,7 @@ public class CalculateExpression {
 			if (factor == null) {
 				return null;
 			} else {
-				return new PineTree(value, type,primary, factor);
+				return new PineTree(value, type,"","", primary, factor);
 			}
 		}
 
@@ -134,7 +165,7 @@ public class CalculateExpression {
 		String type = token.getType();
 		if (type == "INT" || type == "FLOAT") {
 
-			return new PineTree(value,type, null, null);
+			return new PineTree(value, type,null,null, null, null);
 		} else if (type == "LPAREN") {
 
 			PineTree expr = Expression();
@@ -147,8 +178,10 @@ public class CalculateExpression {
 				String value2 = token2.getValue();
 				String type2 = token2.getType();
 				if (type2 == "RPAREN") {
-				/*	return new PineTree(value, expr, new PineTree(value2, null,
-							null));*/
+					/*
+					 * return new PineTree(value, expr, new PineTree(value2,
+					 * null, null));
+					 */
 					return expr;
 
 				} else {

@@ -58,6 +58,7 @@ public class PineTreeTraversal {
 
 	public void calculate(List<PineTree> pineTreeL) {
 
+
 		for (int i = 0; i < pineTreeL.size(); i++) {
 
 			PineTree pine = pineTreeL.get(i);
