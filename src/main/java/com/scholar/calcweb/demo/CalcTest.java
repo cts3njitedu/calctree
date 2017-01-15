@@ -11,8 +11,10 @@ public class CalcTest {
 		 System.out.println(calculator.execute().getResult());*/
 		
 		
-		RpnCalculator calculator = new RpnCalculator("(2+3)^-1+4");
-		calculator.execute();
+		RpnCalculator calculator = new RpnCalculator("3.8+2.1");
+		System.out.println(calculator.execute().getResult());
+		
+		System.out.println(3.8+2.1);
 		 
 	/*	Tokenizer token = new Tokenizer("(((9+2)-5*19.78))");
 		token.performTokenizerB();

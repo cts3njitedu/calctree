@@ -4,8 +4,8 @@ public class MathFunctions {
 
 	public static String[] add(String x, String y) {
 
-		float number1 = Float.parseFloat(x);
-		float number2 = Float.parseFloat(y);
+		double number1 = Double.parseDouble(x);
+		double number2 = Double.parseDouble(y);
 
 		String result = String.valueOf(number1 + number2);
 
@@ -26,8 +26,8 @@ public class MathFunctions {
 
 	public static String[] multiply(String x, String y) {
 
-		float number1 = Float.parseFloat(x);
-		float number2 = Float.parseFloat(y);
+		double number1 = Double.parseDouble(x);
+		double number2 = Double.parseDouble(y);
 
 		String result = String.valueOf(number1 * number2);
 
@@ -48,8 +48,8 @@ public class MathFunctions {
 
 	public static String[] divide(String x, String y) {
 
-		float number1 = Float.parseFloat(x);
-		float number2 = Float.parseFloat(y);
+		double number1 = Double.parseDouble(x);
+		double number2 = Double.parseDouble(y);
 
 		String result = String.valueOf(number1 / number2);
 
@@ -70,8 +70,8 @@ public class MathFunctions {
 
 	public static String[] exponent(String x, String y) {
 
-		float number1 = Float.parseFloat(x);
-		float number2 = Float.parseFloat(y);
+		double number1 = Double.parseDouble(x);
+		double number2 = Double.parseDouble(y);
 
 		String result = String.valueOf(Math.pow(number1, number2));
 		return checkIntFloat(result);
@@ -80,8 +80,8 @@ public class MathFunctions {
 
 	public static String[] subtract(String x, String y) {
 
-		float number1 = Float.parseFloat(x);
-		float number2 = Float.parseFloat(y);
+		double number1 = Double.parseDouble(x);
+		double number2 = Double.parseDouble(y);
 
 		String result = String.valueOf(number1 - number2);
 
@@ -102,8 +102,8 @@ public class MathFunctions {
 
 	public static String[] mod(String x, String y) {
 
-		float number1 = Float.parseFloat(x);
-		float number2 = Float.parseFloat(y);
+		double number1 = Double.parseDouble(x);
+		double number2 = Double.parseDouble(y);
 
 	
 		
