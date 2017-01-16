@@ -20,6 +20,7 @@ public class Tokenizer {
 	public boolean performTokenizer() {
 		String token = "";
 		boolean rParen = false;
+	
 		for (int i = 0; i < tokenString.length(); i++) {
 
 			char t = tokenString.charAt(i);
@@ -28,7 +29,11 @@ public class Tokenizer {
 			case '@':
 				if (token.length() == 0) {
 
-					break;
+					if (i == tokenString.length() - 1) {
+						break;
+					}
+					else
+						return false;
 				}
 				if (token.contains('.' + "")) {
 
@@ -87,10 +92,10 @@ public class Tokenizer {
 					}
 					Token tokenS = new Token(Expression.MINUS.name(), t + "");
 					tokenList.add(tokenS);
-					token="";
-					rParen=false;
+					token = "";
+					rParen = false;
 					break;
-					
+
 				}
 				if (token.contains('.' + "")) {
 

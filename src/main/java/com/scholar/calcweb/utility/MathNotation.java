@@ -74,7 +74,24 @@ public class MathNotation {
 							break;
 						}
 
-						if (precedence.get(currValue) >= precedence.get(value)) {
+						if(value.equals("^")){
+							
+							
+							if(precedence.get(currValue)>precedence.get(value)){
+								
+								output.add(curr);
+
+								opStack.pop();
+								
+							}
+							else{
+								opStack.push(t);
+								break;
+								
+							}
+						}
+						
+						if ((precedence.get(currValue) >= precedence.get(value))) {
 							output.add(curr);
 
 							opStack.pop();
