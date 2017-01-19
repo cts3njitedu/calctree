@@ -16,17 +16,20 @@ public class CalcTest {
 		 System.out.println(calculator.execute().getResult());*/
 		
 		
-		/*RpnCalculator calculator = new RpnCalculator("2^2^(1+2)");
-		System.out.println(calculator.execute().getResult());*/
+		RpnCalculator calculator = new RpnCalculator("5+-(3+8)");
+		System.out.println(calculator.execute().getResult());
+		
+		
+		System.exit(0);
 		
 		//System.out.println(3.94-5.3);
 		 
 		
-		Tokenizer token = new Tokenizer("(2^3)^2");
+		Tokenizer token = new Tokenizer("5--(3+2)");
 		token.performTokenizer();
 		List<Token>tok = token.getTokenList();
-		List<Token> tokenM = MathNotation.infixToPostfix(tok);
-		for(Token t: tokenM ){
+		//List<Token> tokenM = MathNotation.infixToPostfix(tok);
+		for(Token t: tok ){
 			
 			System.out.print(t.getValue());
 			

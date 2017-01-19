@@ -279,6 +279,21 @@ public class Tokenizer {
 					break;
 
 				}
+				if(token.equals("-")){
+					
+					Token tokenZ = new Token(Expression.INT.name(), token + "1");
+					tokenList.add(tokenZ);
+					
+					Token tokenL = new Token(Expression.STAR.name(), "*");
+					tokenList.add(tokenL);
+					
+					Token tokenSS = new Token(Expression.LPAREN.name(), t + "");
+					tokenList.add(tokenSS);
+					
+					token = "";
+					break;
+					
+				}
 				if (token.contains('.' + "")) {
 
 					Token tokenZ = new Token(Expression.FLOAT.name(), token);
