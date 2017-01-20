@@ -16,7 +16,7 @@ public class CalcTest {
 		 System.out.println(calculator.execute().getResult());*/
 		
 		
-		RpnCalculator calculator = new RpnCalculator("5+-(3+8)");
+		RpnCalculator calculator = new RpnCalculator("(1+2)^2^3");
 		System.out.println(calculator.execute().getResult());
 		
 		

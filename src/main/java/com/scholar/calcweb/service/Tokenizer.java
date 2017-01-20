@@ -1,6 +1,6 @@
 package com.scholar.calcweb.service;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.scholar.calcweb.model.Token;
@@ -14,13 +14,14 @@ public class Tokenizer {
 
 	public Tokenizer(String tokenString) {
 		this.tokenString = tokenString.trim() + "@";
-		this.tokenList = new LinkedList<>();
+		this.tokenList = new ArrayList<>();
 	}
 
 	public boolean performTokenizer() {
 		String token = "";
 		boolean rParen = false;
-	
+		Token tokenN = null;
+
 		for (int i = 0; i < tokenString.length(); i++) {
 
 			char t = tokenString.charAt(i);
@@ -31,20 +32,19 @@ public class Tokenizer {
 
 					if (i == tokenString.length() - 1) {
 						break;
-					}
-					else
+					} else
 						return false;
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
@@ -90,8 +90,8 @@ public class Tokenizer {
 						token = token + t;
 						break;
 					}
-					Token tokenS = new Token(Expression.MINUS.name(), t + "");
-					tokenList.add(tokenS);
+					tokenN = new Token(Expression.MINUS.name(), t + "");
+					tokenList.add(tokenN);
 					token = "";
 					rParen = false;
 					break;
@@ -99,27 +99,27 @@ public class Tokenizer {
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
-				Token tokenS = new Token(Expression.MINUS.name(), t + "");
-				tokenList.add(tokenS);
+				tokenN = new Token(Expression.MINUS.name(), t + "");
+				tokenList.add(tokenN);
 				break;
 			case '+':
 				if (token.length() == 0) {
 
 					if (rParen) {
 
-						Token tokenZ = new Token(Expression.PLUS.name(), t + "");
-						tokenList.add(tokenZ);
+						tokenN = new Token(Expression.PLUS.name(), t + "");
+						tokenList.add(tokenN);
 						rParen = false;
 						token = "";
 						break;
@@ -129,20 +129,20 @@ public class Tokenizer {
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
 
-				Token tokenP = new Token(Expression.PLUS.name(), t + "");
-				tokenList.add(tokenP);
+				tokenN = new Token(Expression.PLUS.name(), t + "");
+				tokenList.add(tokenN);
 				break;
 
 			case '*':
@@ -150,8 +150,8 @@ public class Tokenizer {
 
 					if (rParen) {
 
-						Token tokenZ = new Token(Expression.STAR.name(), t + "");
-						tokenList.add(tokenZ);
+						tokenN = new Token(Expression.STAR.name(), t + "");
+						tokenList.add(tokenN);
 						rParen = false;
 						token = "";
 						break;
@@ -161,27 +161,27 @@ public class Tokenizer {
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
-				Token tokenT = new Token(Expression.STAR.name(), t + "");
-				tokenList.add(tokenT);
+				tokenN = new Token(Expression.STAR.name(), t + "");
+				tokenList.add(tokenN);
 				break;
 			case '/':
 				if (token.length() == 0) {
 
 					if (rParen) {
 
-						Token tokenZ = new Token(Expression.DIV.name(), t + "");
-						tokenList.add(tokenZ);
+						tokenN = new Token(Expression.DIV.name(), t + "");
+						tokenList.add(tokenN);
 						rParen = false;
 						token = "";
 						break;
@@ -191,27 +191,27 @@ public class Tokenizer {
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
-				Token tokenD = new Token(Expression.DIV.name(), t + "");
-				tokenList.add(tokenD);
+				tokenN = new Token(Expression.DIV.name(), t + "");
+				tokenList.add(tokenN);
 				break;
 			case '%':
 				if (token.length() == 0) {
 
 					if (rParen) {
 
-						Token tokenZ = new Token(Expression.MOD.name(), t + "");
-						tokenList.add(tokenZ);
+						tokenN = new Token(Expression.MOD.name(), t + "");
+						tokenList.add(tokenN);
 						rParen = false;
 						token = "";
 						break;
@@ -221,27 +221,27 @@ public class Tokenizer {
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
-				Token tokenM = new Token(Expression.MOD.name(), t + "");
-				tokenList.add(tokenM);
+				tokenN = new Token(Expression.MOD.name(), t + "");
+				tokenList.add(tokenN);
 				break;
 			case '^':
 				if (token.length() == 0) {
 
 					if (rParen) {
 
-						Token tokenZ = new Token(Expression.EXP.name(), t + "");
-						tokenList.add(tokenZ);
+						tokenN = new Token(Expression.EXP.name(), t + "");
+						tokenList.add(tokenN);
 						rParen = false;
 						token = "";
 						break;
@@ -251,19 +251,19 @@ public class Tokenizer {
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
-				Token tokenE = new Token(Expression.EXP.name(), t + "");
-				tokenList.add(tokenE);
+				tokenN = new Token(Expression.EXP.name(), t + "");
+				tokenList.add(tokenN);
 				break;
 
 			case '(':
@@ -273,68 +273,68 @@ public class Tokenizer {
 
 						return false;
 					}
-					Token tokenZ = new Token(Expression.LPAREN.name(), t + "");
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.LPAREN.name(), t + "");
+					tokenList.add(tokenN);
 					token = "";
 					break;
 
 				}
-				if(token.equals("-")){
-					
-					Token tokenZ = new Token(Expression.INT.name(), token + "1");
-					tokenList.add(tokenZ);
-					
-					Token tokenL = new Token(Expression.STAR.name(), "*");
-					tokenList.add(tokenL);
-					
-					Token tokenSS = new Token(Expression.LPAREN.name(), t + "");
-					tokenList.add(tokenSS);
-					
+				if (token.equals("-")) {
+
+					tokenN = new Token(Expression.INT.name(), token + "1");
+					tokenList.add(tokenN);
+
+					tokenN = new Token(Expression.STAR.name(), "*");
+					tokenList.add(tokenN);
+
+					tokenN = new Token(Expression.LPAREN.name(), t + "");
+					tokenList.add(tokenN);
+
 					token = "";
 					break;
-					
+
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
-				Token tokenL = new Token(Expression.LPAREN.name(), t + "");
-				tokenList.add(tokenL);
+				tokenN = new Token(Expression.LPAREN.name(), t + "");
+				tokenList.add(tokenN);
 				break;
 			case ')':
 				if (token.length() == 0) {
 
 					rParen = true;
-					Token tokenZ = new Token(Expression.RPAREN.name(), t + "");
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.RPAREN.name(), t + "");
+					tokenList.add(tokenN);
 					token = "";
 					break;
 
 				}
 				if (token.contains('.' + "")) {
 
-					Token tokenZ = new Token(Expression.FLOAT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.FLOAT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				} else {
 
-					Token tokenZ = new Token(Expression.INT.name(), token);
-					tokenList.add(tokenZ);
+					tokenN = new Token(Expression.INT.name(), token);
+					tokenList.add(tokenN);
 					token = "";
 
 				}
-				Token tokenR = new Token(Expression.RPAREN.name(), t + "");
-				tokenList.add(tokenR);
+				tokenN = new Token(Expression.RPAREN.name(), t + "");
+				tokenList.add(tokenN);
 				rParen = true;
 				break;
 
@@ -343,163 +343,6 @@ public class Tokenizer {
 		}
 		return true;
 
-	}
-
-	public boolean performTokenizerO() {
-		String token = "";
-		boolean isInteger = true;
-		boolean isOperator = false;
-
-		for (int i = 0; i < tokenString.length(); i++) {
-			char t = tokenString.charAt(i);
-
-			if ((t >= '0' && t <= '9')) {
-
-				if (isOperator) {
-					isInteger = true;
-				}
-				isOperator = false;
-				token = token + t;
-
-			} else if (t == '.') {
-
-				token = token + t;
-				if (!isOperator) {
-					isOperator = false;
-					if (isInteger) {
-						isInteger = false;
-					} else {
-						return false;
-					}
-				} else {
-					isInteger = false;
-				}
-			} else if (t == '-') {
-
-				if ((token.equals("."))) {
-
-					return false;
-				}
-
-				if (token.length() > 0) {
-					if (isInteger) {
-
-						Token tokenZ = new Token(Expression.INT.name(), token);
-						tokenList.add(tokenZ);
-
-					} else {
-
-						Token tokenZ = new Token(Expression.FLOAT.name(), token);
-						tokenList.add(tokenZ);
-					}
-
-					Token tokenZ = new Token(Expression.MINUS.name(), t + "");
-					tokenList.add(tokenZ);
-					isOperator = true;
-					isInteger = true;
-					token = "";
-				} else {
-
-					isOperator = true;
-					isInteger = true;
-					token = token + t;
-				}
-
-			} else if (t == '+' || t == '*' || t == '%' || t == '^' || t == '/') {
-				if ((token.equals("."))) {
-
-					return false;
-				}
-
-				if (token.length() > 0) {
-					if (isInteger) {
-
-						Token tokenZ = new Token(Expression.INT.name(), token);
-						tokenList.add(tokenZ);
-
-					} else {
-
-						Token tokenZ = new Token(Expression.FLOAT.name(), token);
-						tokenList.add(tokenZ);
-					}
-				}
-				if (t == '+') {
-					Token tokenZ = new Token(Expression.PLUS.name(), t + "");
-					tokenList.add(tokenZ);
-				} else if (t == '*') {
-					Token tokenZ = new Token(Expression.STAR.name(), t + "");
-					tokenList.add(tokenZ);
-				} else if (t == '/') {
-					Token tokenZ = new Token(Expression.DIV.name(), t + "");
-					tokenList.add(tokenZ);
-				} else if (t == '%') {
-					Token tokenZ = new Token(Expression.MOD.name(), t + "");
-					tokenList.add(tokenZ);
-				} else if (t == '^') {
-					Token tokenZ = new Token(Expression.EXP.name(), t + "");
-					tokenList.add(tokenZ);
-				} else if (t == '-') {
-					Token tokenZ = new Token(Expression.MINUS.name(), t + "");
-					tokenList.add(tokenZ);
-				}
-
-				isOperator = true;
-				isInteger = true;
-				token = "";
-			} else if (t == '(' || t == ')') {
-				if ((token.equals("."))) {
-
-					return false;
-				}
-				if (token.length() > 0) {
-					if (isInteger) {
-
-						Token tokenZ = new Token(Expression.INT.name(), token);
-						tokenList.add(tokenZ);
-
-					} else {
-
-						Token tokenZ = new Token(Expression.FLOAT.name(), token);
-						tokenList.add(tokenZ);
-					}
-				}
-				if (t == '(') {
-					Token tokenZ = new Token(Expression.LPAREN.name(), t + "");
-					tokenList.add(tokenZ);
-				} else if (t == ')') {
-					Token tokenZ = new Token(Expression.RPAREN.name(), t + "");
-					tokenList.add(tokenZ);
-				}
-
-				isOperator = true;
-				isInteger = true;
-				token = "";
-
-			} else {
-				if (t != ' ')
-					return false;
-			}
-			if (i == tokenString.length() - 1) {
-
-				if ((token.equals("."))) {
-
-					return false;
-				}
-				if (token.length() > 0) {
-					if (isInteger) {
-
-						Token tokenZ = new Token(Expression.INT.name(), token);
-						tokenList.add(tokenZ);
-
-					} else {
-
-						Token tokenZ = new Token(Expression.FLOAT.name(), token);
-						tokenList.add(tokenZ);
-					}
-				}
-			}
-		}
-		return true;
 	}
 
 	public List<Token> getTokenList() {
